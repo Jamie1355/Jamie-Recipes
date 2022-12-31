@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using JamiesRecipes.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<JamiesRecipesContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("JamiesRecipesContext") ?? throw new InvalidOperationException("Connection string 'JamiesRecipesContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
