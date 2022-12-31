@@ -129,7 +129,7 @@ namespace JamiesRecipes.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = recipe.Id });
             }
             return View(recipe);
         }
