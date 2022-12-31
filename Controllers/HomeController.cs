@@ -78,7 +78,7 @@ namespace JamiesRecipes.Controllers
             {
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = recipe.Id });
             }
             return View(recipe);
         }
