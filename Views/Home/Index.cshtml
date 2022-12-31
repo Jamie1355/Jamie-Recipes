@@ -1,14 +1,22 @@
 @model IEnumerable<JamiesRecipes.Models.Recipe>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Recipes";
 }
 
-<h1>Index</h1>
+<h1>Recipes</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-controller="Home" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>

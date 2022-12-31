@@ -22,7 +22,7 @@ public static class SeedData
             context.Recipe.AddRange(
                 new Recipe
                 {
-                    Title = "Mac & Cheese",
+                    Title = "Mac and Cheese",
                     Description = "A dirty Mac & Cheese - the perfect alternative to a greasy takeaway!",
                     Serves = 2,
                     Ingredients = "6 handfuls Macoroni Pasta, Some Broccoli, A knob of butter, A heaped tablespoon of flour, Lots of Milk, Lots of Cheese",

@@ -20,11 +20,21 @@ namespace JamiesRecipes.Controllers
         }
 
         // GET: Home
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Recipe != null ? 
-                          View(await _context.Recipe.ToListAsync()) :
-                          Problem("Entity set 'JamiesRecipesContext.Recipe'  is null.");
+            if (_context.Recipe == null)
+            {
+                return Problem("Entity set 'JamiesRecipesContext.Recipe'  is null.");
+            }
+
+            var recipes = from r in _context.Recipe select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Title!.ToLower().Contains(searchString.ToLower()));
+            }
+
+            return View(await recipes.ToListAsync());
         }
 
         // GET: Home/Privacy
