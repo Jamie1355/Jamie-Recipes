@@ -16323,8 +16323,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Home/Details.cshtml",
+      "TargetPath": "Views\\Home\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Home/Delete.cshtml",
+      "TargetPath": "Views\\Home\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Home/Edit.cshtml",
+      "TargetPath": "Views\\Home\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Home/Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Home/Create.cshtml",
+      "TargetPath": "Views\\Home\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

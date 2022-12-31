@@ -1,9 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using JamiesRecipes.Data;
+using JamiesRecipes.Models;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<JamiesRecipesContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("JamiesRecipesContext") ?? throw new InvalidOperationException("Connection string 'JamiesRecipesContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
