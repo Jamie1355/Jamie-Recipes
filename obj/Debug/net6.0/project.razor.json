@@ -16308,6 +16308,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Shared/DisplayTemplates/DisplayRecipe.cshtml",
+      "TargetPath": "Views\\Shared\\DisplayTemplates\\DisplayRecipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/jamie/Documents/Programming/JamiesRecipes/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
