@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using JamiesRecipes.Data;
 using JamiesRecipes.Models;
+using Microsoft.Net.Http.Headers;
 
 namespace JamiesRecipes.Controllers
 {
@@ -72,13 +74,21 @@ namespace JamiesRecipes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Serves,Ingredients,Method,Dietary")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Serves,Ingredients,Method,Dietary,ImageUrl")] Recipe recipe, [FromForm]IFormFile uploadImage)
         {
             if (ModelState.IsValid)
             {
+                // Save uploaded image
+                if(uploadImage != null && uploadImage.Length > 0)
+                    {
+                        var fileName = Path.GetFileName(uploadImage.FileName);
+                        await SaveUploadedImage(uploadImage);
+                        recipe.ImageUrl = fileName;
+                    }
+
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = recipe.Id });
             }
             return View(recipe);
         }
@@ -104,7 +114,7 @@ namespace JamiesRecipes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Serves,Ingredients,Method,Dietary")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Serves,Ingredients,Method,Dietary,ImageUrl")] Recipe recipe, [FromForm]IFormFile? uploadImage)
         {
             if (id != recipe.Id)
             {
@@ -115,6 +125,13 @@ namespace JamiesRecipes.Controllers
             {
                 try
                 {
+                    if(uploadImage != null && uploadImage.Length > 0)
+                    {
+                        var fileName = Path.GetFileName(uploadImage.FileName);
+                        await SaveUploadedImage(uploadImage);
+                        recipe.ImageUrl = fileName;
+                    }
+                    
                     _context.Update(recipe);
                     await _context.SaveChangesAsync();
                 }
@@ -129,7 +146,7 @@ namespace JamiesRecipes.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = recipe.Id });
             }
             return View(recipe);
         }
@@ -174,6 +191,23 @@ namespace JamiesRecipes.Controllers
         private bool RecipeExists(int id)
         {
           return (_context.Recipe?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private async Task<IActionResult> SaveUploadedImage(IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+
+                var fileName = Path.GetFileName(file.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Uploads", fileName);
+
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+
+            return Ok();
         }
     }
 }
