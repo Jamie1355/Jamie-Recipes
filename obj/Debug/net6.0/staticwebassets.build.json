@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x/CVTc0UYlMArcQ+ECdvFIZ4ymIAOGaHiqpMgd08bgU=",
+  "Hash": "kb68FNBHpkFTpi3wcr09kI9hL02BEMVookrjNHPeMq4=",
   "Source": "JamiesRecipes",
   "BasePath": "_content/JamiesRecipes",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/jamie/Documents/Programming/JamiesRecipes/wwwroot/Images/Uploads/MacAndCheese.jpg",
+      "SourceId": "JamiesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/jamie/Documents/Programming/JamiesRecipes/wwwroot/",
+      "BasePath": "_content/JamiesRecipes",
+      "RelativePath": "Images/Uploads/MacAndCheese.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Uploads/MacAndCheese.jpg"
     },
     {
       "Identity": "/home/jamie/Documents/Programming/JamiesRecipes/wwwroot/js/site.js",
