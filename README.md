@@ -9,3 +9,5 @@ An ASP.NET MVC web application to store, view and search recipes.
 + Using EF Core Migrations to create an SQLite/SQL Server database
 + Seeding a database
 + Querying a database using LINQ
++ Allowing image file uploads
++ Storing uploaded image files
