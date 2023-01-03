@@ -28,4 +28,6 @@ public class Recipe{
 
     [Required]
     public string? Dietary { get; set; }
+
+    public string? ImageUrl { get; set; }
 }
