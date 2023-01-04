@@ -74,17 +74,21 @@ namespace JamiesRecipes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Serves,Ingredients,Method,Dietary,ImageUrl")] Recipe recipe, [FromForm]IFormFile uploadImage)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Serves,Ingredients,Method,Dietary,ImageUrl")] Recipe recipe, [FromForm]IFormFile? uploadImage)
         {
             if (ModelState.IsValid)
             {
                 // Save uploaded image
                 if(uploadImage != null && uploadImage.Length > 0)
-                    {
-                        var fileName = Path.GetFileName(uploadImage.FileName);
-                        await SaveUploadedImage(uploadImage);
-                        recipe.ImageUrl = fileName;
-                    }
+                {
+                    var fileName = Path.GetFileName(uploadImage.FileName);
+                    await SaveUploadedImage(uploadImage);
+                    recipe.ImageUrl = fileName;
+                }
+                else
+                {
+                    recipe.ImageUrl = "";
+                }
 
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();

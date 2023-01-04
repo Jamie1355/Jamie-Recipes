@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace JamiesRecipes.Models;
@@ -29,5 +30,6 @@ public class Recipe{
     [Required]
     public string? Dietary { get; set; }
 
+    [DisplayName("Image")]
     public string? ImageUrl { get; set; }
 }

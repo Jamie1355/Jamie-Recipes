@@ -7,7 +7,7 @@
     <h1>
         @Html.DisplayFor(model => model.Title)
     </h1>
-    <img src="/Images/Uploads/@Model.ImageUrl" height="200px"/>
+    <img src="/Images/Uploads/@Model.ImageUrl" height="200px" onerror="this.style.height='0px'" />
     <p>
         @Html.DisplayFor(model => model.Description)
     </p>
