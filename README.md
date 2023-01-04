@@ -11,3 +11,8 @@ An ASP.NET MVC web application to store, view and search recipes.
 + Querying a database using LINQ
 + Allowing image file uploads
 + Storing uploaded image files
+
+![Recipe List](/SampleImages/Index.png)
+![Mac and Cheese Recipe Example](/SampleImages/MacAndCheeseRecipe.png)
+![Recipe Creation Example](/SampleImages/CreateRecipe.png)
+![Stir Fry Recipe Example](/SampleImages/StirFryRecipe.png)
